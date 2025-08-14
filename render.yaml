@@ -3,10 +3,10 @@ services:
   name: video-quality-checker-backend
   env: python
   plan: free
-  buildCommand: cd backend && pip install -r requirements-production.txt
-  startCommand: cd backend && gunicorn --bind 0.0.0.0:$PORT app_production:app
+  buildCommand: pip install -r backend/requirements-production.txt
+  startCommand: cd backend && python app_production.py
   envVars:
   - key: FLASK_ENV
     value: production
-  - key: PYTHON_VERSION
-    value: 3.11.0
+  - key: PORT
+    value: 10000
