@@ -3,7 +3,8 @@ services:
   name: video-quality-checker-backend
   env: python
   plan: free
-  buildCommand: pip install -r backend/requirements-production.txt
+  runtime: python-3.11.0
+  buildCommand: pip install -r backend/requirements-minimal.txt
   startCommand: cd backend && python app_production.py
   envVars:
   - key: FLASK_ENV
