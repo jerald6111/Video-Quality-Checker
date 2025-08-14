@@ -1,6 +1,12 @@
-version: 1
-build:
-  commands:
-    - cd backend
-    - pip install -r requirements.txt
-    - echo "Backend build completed"
+services:
+- type: web
+  name: video-quality-checker-backend
+  env: python
+  plan: free
+  buildCommand: cd backend && pip install -r requirements-production.txt
+  startCommand: cd backend && gunicorn --bind 0.0.0.0:$PORT app_production:app
+  envVars:
+  - key: FLASK_ENV
+    value: production
+  - key: PYTHON_VERSION
+    value: 3.11.0
